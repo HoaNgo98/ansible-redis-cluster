@@ -1,0 +1,5 @@
+---
+- hosts: redis_cluster
+  roles:
+    - { role: redis_packages, tags: [ 'setup', 'packages' ] }
+    - { role: redis_conf, tags: [ 'config' ] }

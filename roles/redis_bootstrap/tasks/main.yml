@@ -1,0 +1,8 @@
+---
+- name: Restart Redis-Master and Redis-Slave
+  systemd: name=redis-server state=restarted
+  when: inventory_hostname == groups['redis_cluster'][0] and inventory_hostname == groups['redis_cluster'][1]
+
+- name: Restart Redis-Sentinel
+  systemd: name=redis-sendtinel state=restarted
+  when: inventory_hostname != groups['redis_cluster'][0] and inventory_hostname != groups['redis_cluster'][1]
