@@ -1,22 +1,14 @@
 ---
-#- name: Restart Redis-Master and Redis-Slave
-#  systemd: name=redis-server state=restarted
-#  when: 
-#    - inventory_hostname == groups['redis_cluster'][1]
-#    - inventory_hostname == groups['redis_cluster'][2]
-#    - inventory_hostname == groups['redis_cluster'][0]
-    
 - name: Restart Redis-Master and Redis-Slave
   command: systemctl restart redis-server
-  when: 
-    - inventory_hostname == groups['redis_cluster'][1]
-    - inventory_hostname == groups['redis_cluster'][2]
-    - inventory_hostname == groups['redis_cluster'][0]
-    
+  when:
+    - inventory_hostname != groups['redis_cluster'][3]
+    - inventory_hostname != groups['redis_cluster'][4]
+    - inventory_hostname != groups['redis_cluster'][5]
+
 - name: Restart Redis-Sentinel
   command: systemctl restart redis-sentinel
-  when: 
+  when:
     - inventory_hostname != groups['redis_cluster'][1]
     - inventory_hostname != groups['redis_cluster'][2]
     - inventory_hostname != groups['redis_cluster'][0]
-
