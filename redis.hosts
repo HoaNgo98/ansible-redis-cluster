@@ -1,6 +1,7 @@
 [redis_cluster]
 vdb-redis01 ansible_connection=local # master
 vdb-redis02 ansible_ssh_host=xxx ansible_user=root ansible_become=true ansible_ssh_private_key_file=/root/.ssh/id_rsa # slave
-vdb-redis03 ansible_ssh_host=yyy ansible_user=root ansible_become=true ansible_ssh_private_key_file=/root/.ssh/id_rsa # sentinel
+vdb-redis03 ansible_ssh_host=yyy ansible_user=root ansible_become=true ansible_ssh_private_key_file=/root/.ssh/id_rsa # slave
 vdb-redis04 ansible_ssh_host=zzz ansible_user=root ansible_become=true ansible_ssh_private_key_file=/root/.ssh/id_rsa # sentinel
 vdb-redis05 ansible_ssh_host=ttt ansible_user=root ansible_become=true ansible_ssh_private_key_file=/root/.ssh/id_rsa # sentinel
+vdb-redis06 ansible_ssh_host=ttt ansible_user=root ansible_become=true ansible_ssh_private_key_file=/root/.ssh/id_rsa # sentinel
