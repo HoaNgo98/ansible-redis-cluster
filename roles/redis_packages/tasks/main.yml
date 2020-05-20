@@ -4,14 +4,14 @@
   become_user: root
   apt: name=redis-server state=present update_cache=yes
   when: 
-    -
-    -
-    -
-- name: Install Redis-server and Redis-sentinel packages
+    - inventory_hostname != groups['redis_cluster'][3]
+    - inventory_hostname != groups['redis_cluster'][4]
+    - inventory_hostname != groups['redis_cluster'][5]
+- name: Install Redis-sentinel packages
   become: yes
   become_user: root
   apt: name=redis-sentinel state=present update_cache=yes
   when: 
-    -
-    -
-    -
+    - inventory_hostname != groups['redis_cluster'][1]
+    - inventory_hostname != groups['redis_cluster'][2]
+    - inventory_hostname != groups['redis_cluster'][0]
