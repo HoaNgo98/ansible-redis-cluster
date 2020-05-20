@@ -1,8 +1,17 @@
 ---
+- name: Install Redis-server packages
+  become: yes
+  become_user: root
+  apt: name=redis-server state=present update_cache=yes
+  when: 
+    -
+    -
+    -
 - name: Install Redis-server and Redis-sentinel packages
   become: yes
   become_user: root
-  apt: name={{ item }} state=present update_cache=yes
-  loop:
-    - redis-server
-    - redis-sentinel
+  apt: name=redis-sentinel state=present update_cache=yes
+  when: 
+    -
+    -
+    -
