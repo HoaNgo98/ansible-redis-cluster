@@ -4,9 +4,10 @@
   when: 
     - inventory_hostname == groups['redis_cluster'][0]
     - inventory_hostname == groups['redis_cluster'][1]
+    - inventory_hostname == groups['redis_cluster'][2]
 
-- name: Restart Redis-Sentinel
-  systemd: name=redis-sendtinel state=restarted
-  when: 
-    - inventory_hostname != groups['redis_cluster'][0]
-    - inventory_hostname != groups['redis_cluster'][1]
+#- name: Restart Redis-Sentinel
+#  systemd: name=redis-sendtinel state=restarted
+#  when: 
+#    - inventory_hostname != groups['redis_cluster'][0]
+#    - inventory_hostname != groups['redis_cluster'][1]
