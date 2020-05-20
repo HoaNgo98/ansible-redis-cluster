@@ -9,8 +9,8 @@ port 26379
 dir "/var/lib/redis"
 
 sentinel monitor mymaster MYIP1 6379 2
-sentinel down-after-milliseconds mymaster 3000
-sentinel failover-timeout mymaster 10000
+sentinel down-after-milliseconds mymaster 60000
+sentinel failover-timeout mymaster 30000
 sentinel parallel-syncs mymaster 1
 
 #sentinel config-epoch mymaster 0
