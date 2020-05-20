@@ -1,4 +1,8 @@
 ---
 - name: Restart Redis-Sentinel
   systemd: name=redis-sentinel state=restarted
-  when: bootstrapped and inventory_hostname != groups['redis_cluster'][0] and inventory_hostname != groups['redis_cluster'][1] 
+  when: 
+    - bootstrapped
+    - inventory_hostname != groups['redis_cluster'][0]
+    - inventory_hostname != groups['redis_cluster'][1] 
+    - inventory_hostname != groups['redis_cluster'][2]
